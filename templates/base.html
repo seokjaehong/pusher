@@ -1,0 +1,39 @@
+<!document html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pusher Test</title>
+    <script src="https://js.pusher.com/4.2/pusher.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('aa225154c5e541e7a10e', {
+            cluster: 'ap1',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function (data) {
+            // alert(JSON.stringify(data));
+            $("#value").append(data);
+        });
+
+    </script>
+</head>
+<body>
+<div id="pusher-text">
+    <form action="" method="GET">
+        <input type="text" name="keyword" placeholder="text" maxlength="8">
+        <button type="submit" id="appendix">upload</button>
+    </form>
+</div>
+<div id="result">
+    <span id="value"></span>
+</div>
+
+</body>
+</html>
