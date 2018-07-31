@@ -14,10 +14,20 @@ def send_pusher(keyword):
         cluster='ap1',
         ssl=True
     )
-    print('keyword:',keyword)
-    for i in list(keyword):
-        print(i)
-        # if i != " ":
-        time.sleep(0.5)
-        pusher_client.trigger('my-channel', 'my-event', i)
 
+    new_keyword=keyword.replace(" ","")
+    percent = 100 / len(list(new_keyword))
+    acc_percent = 0
+
+    for i in list(new_keyword):
+        print(i)
+        acc_percent += percent
+
+        if i != " ":
+            time.sleep(0.5)
+            pusher_client.trigger('my-channel',
+                                  'my-event',
+                                  {
+                                      'keyword': i,
+                                      'acc_percent': "%.2f" % acc_percent
+                                  })
