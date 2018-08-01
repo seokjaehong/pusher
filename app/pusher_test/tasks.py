@@ -1,7 +1,7 @@
 import time
 
 import pusher
-
+import random
 from pusher_test.celery import app
 
 
@@ -15,19 +15,22 @@ def send_pusher(keyword):
         ssl=True
     )
 
-    new_keyword=keyword.replace(" ","")
+    hash_code = random.getrandbits(128)
+    new_keyword = keyword.replace(" ", "")
     percent = 100 / len(list(new_keyword))
     acc_percent = 0
 
     for i in list(new_keyword):
-        print(i)
         acc_percent += percent
+        is_loading = False if "%.2f" % acc_percent == "100.00" else True
 
         if i != " ":
-            time.sleep(0.5)
+            time.sleep(0.6)
             pusher_client.trigger('my-channel',
                                   'my-event',
                                   {
                                       'keyword': i,
-                                      'acc_percent': "%.2f" % acc_percent
+                                      'acc_percent': "%.2f" % acc_percent,
+                                      'hash_code': hash_code,
+                                      'is_loading': is_loading
                                   })
