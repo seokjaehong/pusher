@@ -36,7 +36,8 @@
                 progress_bar.setAttribute('id', Number(data['hash_code'].toString().slice(4, 9)));
             }
             var temp = '#' + data['hash_code'].toString().slice(3, 10);
-            $(temp).append(data['keyword']);
+            console.log("#", data['output']);
+            $(temp).append(data['output']);
 
             var temp_progress = '#' + data['hash_code'].toString().slice(4, 9);
             $(temp_progress).attr('style', "width:" + data['acc_percent'] + "%").text(data['acc_percent'] + "%");
@@ -56,24 +57,25 @@
 <body>
 <div id="container">
     <div class="container" id="pusher-text">
-        <form action="" method="GET">
-            <input type="text" name="keyword" placeholder="text" maxlength="12">
-            <button type="submit" id="appendix" onclick="myFunction()">upload</button>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <!--<input type="text" name="keyword" placeholder="text" maxlength="12">-->
+            <textarea type="text" name="source_code" placeholder="source_code"
+                      style="height: 150px; width: 200px; font-size: 10px"></textarea>
+            <br>
+            <textarea type="text" name="input_data" placeholder="input_data"
+                      style="height: 110px; width: 200px; font-size: 10px"></textarea>
+            <br>
+            <button type="submit" name="compiler" value="compiler">compiler</button>
+            <button type="submit" name="judge">judge</button>
         </form>
     </div>
     <div class="container" id="content">
         <h4>Data Loading percent </h4>
-        <div class="progress" id="progress">
-            <!--<div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0"-->
-            <!--aria-valuemin="0"-->
-            <!--aria-valuemax="100" id="progress-bar">-->
-            <!--</div>-->
-        </div>
-        <div id="result">
-            <!--<h2 id="0"></h2>-->
-            <!--<h2 id =hass/>-->
-        </div>
+        <div class="progress" id="progress"></div>
+        <div id="result"></div>
     </div>
+
 
 </div>
 

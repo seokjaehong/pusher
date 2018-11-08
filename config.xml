@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Problem>
+    <info>
+        <code>ALBS_004</code>
+        <name>입력값 제곱하기</name>
+        <from>Sphere Engine Problems</from>
+        <xml_version>1</xml_version>
+    </info>
+    <config>
+        <sc_limit>0</sc_limit>
+        <resource/>
+        <assessment_type>binary</assessment_type>
+        <scenario>0</scenario>
+        <checker>6</checker>
+        <testable>1</testable>
+        <seq>#0 #1</seq>
+        <auxdata/>
+        <input_as_file>0</input_as_file>
+    </config>
+    <body>
+        <file>ALBS_004.html</file>
+        <dynamic>0</dynamic>
+        <form>0</form>
+    </body>
+    <languages>
+        <string>0</string>
+    </languages>
+    <masterjudge>
+        <name>Generic masterjudge</name>
+        <file>masterjudge</file>
+        <lang>1</lang>
+    </masterjudge>
+    <datasets>
+        <tc_0>
+            <in>0.in</in>
+            <out>0.out</out>
+            <limit_time>1</limit_time>
+            <limit_memory>0</limit_memory>
+            <limit_thread/>
+            <limit_proc/>
+            <limit_output/>
+            <active>1</active>
+            <judge>
+                <name>judge_test</name>
+                <file>0.judge</file>
+                <lang>116</lang>
+                <hash>a8c5b7105701c1cf</hash>
+            </judge>
+        </tc_0>
+        <tc_1>
+            <in>1.in</in>
+            <out>1.out</out>
+            <limit_time>1</limit_time>
+            <limit_memory>0</limit_memory>
+            <limit_thread/>
+            <limit_proc/>
+            <limit_output/>
+            <active>1</active>
+            <judge>
+                <name>Ignores extra whitespaces</name>
+                <file>1.judge</file>
+                <lang>1</lang>
+            </judge>
+        </tc_1>
+    </datasets>
+    <resources/>
+</Problem>
